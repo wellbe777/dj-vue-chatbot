@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base styles */
+body {
+  @apply bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50;
+  @apply font-sans leading-relaxed;
+  @apply m-0 min-h-screen;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#app {
+  @apply w-full min-h-screen flex flex-col;
+}
+
+/* Chat-specific components */
+@layer components {
+  .message-bubble {
+    @apply p-3 rounded-2xl max-w-[80%] md:max-w-[70%] break-words animate-message-appear;
+    @apply shadow-sm;
+  }
+  
+  .user-message {
+    @apply bg-primary-600 text-white self-end rounded-tr-none;
+  }
+  
+  .bot-message {
+    @apply bg-neutral-200 text-neutral-900 dark:bg-neutral-700 dark:text-white self-start rounded-tl-none;
+  }
+  
+  .input-field {
+    @apply w-full border-none shadow-sm rounded-full py-3 px-4 text-base;
+    @apply bg-white dark:bg-neutral-800 text-neutral-900 dark:text-white;
+    @apply focus:ring-2 focus:ring-primary-500 focus:outline-none;
+  }
+  
+  .send-button {
+    @apply absolute right-2 top-1/2 transform -translate-y-1/2;
+    @apply flex items-center justify-center w-10 h-10 rounded-full;
+    @apply bg-primary-600 text-white transition-colors duration-200;
+    @apply hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500;
+  }
+  
+  .quick-action-button {
+    @apply px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-neutral-200 text-neutral-800 dark:bg-neutral-700 dark:text-white;
+    @apply hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500;
+  }
+}
+
+/* Markdown styles */
+.prose pre {
+  @apply bg-neutral-100 dark:bg-neutral-800 rounded-lg p-4 my-2;
+}
+
+.prose code {
+  @apply bg-neutral-100 dark:bg-neutral-800 px-1 py-0.5 rounded;
+}
+
+.prose a {
+  @apply text-primary-600 dark:text-primary-400 hover:underline;
+}
+
+.prose ul {
+  @apply list-disc list-inside;
+}
+
+.prose ol {
+  @apply list-decimal list-inside;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-neutral-300 dark:border-neutral-600 pl-4 my-2;
+}
